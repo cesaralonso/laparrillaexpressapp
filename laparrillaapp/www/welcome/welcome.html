@@ -1,0 +1,319 @@
+    <div class="container" ng-controller="HomeCtrl">
+        
+      <div class="page-header">
+        <img src="imagenes/logo.jpg" alt="La Parrilla Express" />
+      </div>
+
+
+      
+<div class="section">
+
+  <h3>PLATILLOS DEL DÍA (Pollo, Res o Cerdo)</h3>
+  <div class="col s12 m8 offset-m2 l4 offset-l4 hoverable" ng-repeat="platillo in platillos">
+    <div class="card-panel grey lighten-5 z-depth-1">
+      <div class="row valign-wrapper">
+        <div class="col s2">
+          <img class="circle responsive-img" ng-src="imagenes/{{platillo.tipo}}.jpg" alt="{{platillo.title}}">
+        </div>
+        <div class="col s10">
+          <h4>{{platillo.title}}</h4>
+          <p>{{platillo.description}}</p>
+          <div class="card-action">
+            <div style="position: relative;">
+              <div style="position: absolute; display: inline-block; right: 14px;" class="fixed-action-btn horizontal">
+                <a class="btn-floating btn-large red">
+                  <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                  <li><a class="btn-floating red" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-class="{ 'btn-success' : platillo.activo }" ng-click="disablePlatillo(platillo.$id)">highlight_off</i></a></li>
+                  <li><a class="btn-floating yellow darken-1" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-class="{ 'btn-success' : !platillo.activo }" ng-click="enablePlatillo(platillo.$id)">done</i></a></li>
+                  <li><a class="btn-floating green" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" modal href='#editModalPlatillo' ng-click="editPlatillo(platillo.$id)">mode_edit</i></a></li>
+                  <li><a class="btn-floating blue" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-click="confirmDeletePlatillo(platillo.$id)" modal href="#deleteModalPlatillo" >delete_forever</i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <h3>PASTAS C/ CREMA</h3>
+  <div class="col s12 m8 offset-m2 l4 offset-l4 hoverable" ng-repeat="pasta in pastas">
+    <div class="card-panel grey lighten-5 z-depth-1">
+      <div class="row valign-wrapper">
+        <div class="col s2">
+          <i class="material-icons large">restaurant</i>
+        </div>
+        <div class="col s10">
+          <h4>{{pasta.title}}</h4>
+          <p>{{pasta.description}}</p>
+          <div class="card-action">
+            <div style="position: relative;">
+              <div style="position: absolute; display: inline-block; right: 14px;" class="fixed-action-btn horizontal">
+                <a class="btn-floating btn-large red">
+                  <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                  <li><a class="btn-floating red" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-class="{ 'btn-success' : pasta.activo }" ng-click="disablePasta(pasta.$id)">highlight_off</i></a></li>
+                  <li><a class="btn-floating yellow darken-1" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-class="{ 'btn-success' : !pasta.activo }" ng-click="enablePasta(pasta.$id)">done</i></a></li>
+                  <li><a class="btn-floating green" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" href='#editModalPasta' modal ng-click="editPasta(pasta.$id)">mode_edit</i></a></li>
+                  <li><a class="btn-floating blue" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-click="confirmDeletePasta(pasta.$id)" modal href="#deleteModalPasta" >delete_forever</i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <h3>SOPA AGUADA</h3>
+  <div class="col s12 m8 offset-m2 l4 offset-l4 hoverable" ng-repeat="sopa in sopas">
+    <div class="card-panel grey lighten-5 z-depth-1">
+      <div class="row valign-wrapper">
+        <div class="col s2">
+          <i class="material-icons large">restaurant_menu</i>
+        </div>
+        <div class="col s10">
+          <h4>{{sopa.title}}</h4>
+          <p>{{sopa.description}}</p>
+          <div class="card-action">
+            <div style="position: relative;">
+              <div style="position: absolute; display: inline-block; right: 14px;" class="fixed-action-btn horizontal">
+                <a class="btn-floating btn-large red">
+                  <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                  <li><a class="btn-floating red" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-class="{ 'btn-success' : sopa.activo }" ng-click="disableSopa(sopa.$id)">highlight_off</i></a></li>
+                  <li><a class="btn-floating yellow darken-1" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-class="{ 'btn-success' : !sopa.activo }" ng-click="enableSopa(sopa.$id)">done</i></a></li>
+                  <li><a class="btn-floating green" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" href='#editModalSopa' modal ng-click="editSopa(sopa.$id)">mode_edit</i></a></li>
+                  <li><a class="btn-floating blue" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-click="confirmDeleteSopa(sopa.$id)" modal href="#deleteModalSopa" >delete_forever</i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <h3>AGUA FRESCA</h3>
+  <div class="col s12 m8 offset-m2 l4 offset-l4 hoverable" ng-repeat="agua in aguas">
+    <div class="card-panel grey lighten-5 z-depth-1">
+      <div class="row valign-wrapper">
+        <div class="col s2">
+          <i class="material-icons large">local_drink</i>
+        </div>
+        <div class="col s10">
+          <h4>{{agua.title}}</h4>
+          <p>{{agua.description}}</p>
+          <div class="card-action">
+            <div style="position: relative;">
+              <div style="position: absolute; display: inline-block; right: 14px;" class="fixed-action-btn horizontal">
+                <a class="btn-floating btn-large red">
+                  <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                  <li><a class="btn-floating red" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-class="{ 'btn-success' : agua.activo }" ng-click="disableAgua(agua.$id)">highlight_off</i></a></li>
+                  <li><a class="btn-floating yellow darken-1" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-class="{ 'btn-success' : !agua.activo }" ng-click="enableAgua(agua.$id)">done</i></a></li>
+                  <li><a class="btn-floating green" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" href='#editModalAgua' modal ng-click="editAgua(agua.$id)">mode_edit</i></a></li>
+                  <li><a class="btn-floating blue" style="transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(40px); opacity: 0;"><i class="material-icons" ng-click="confirmDeleteAgua(agua.$id)" modal href="#deleteModalAgua" >delete_forever</i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal" id="editModalPlatillo">
+    <div class="modal-content">
+        <h4>Actualizar platillo</h4>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                  <input placeholder="Nombre de platillo" id="Nombre" type="text" class="validate" ng-model="platilloToUpdate.title" >
+                  <label for="Nombre">Nombre de platillo</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="Descripción" class="materialize-textarea" ng-model="platilloToUpdate.description"></textarea>
+                <label for="Descripción">Descripción</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <select ng-model="platilloToUpdate.tipo" material-select>
+                  <option value="res">Carne de Res</option>
+                  <option value="pollo">Carne de Pollo</option>
+                  <option value="cerdo">Carne de Cerdo</option>
+                </select>
+                <label for="Tipo">Tipo de carne</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="updatePlatillo()">Publicar</a>
+      </div>
+    </div>
+</div>
+
+<div class="modal" id="editModalPasta" >
+    <div class="modal-content">
+        <h4 class="modal-title" id="editModalLabel">Actualizar pasta</h4>
+        <div class="row">
+          <form class="col s12">
+          <div class="input-field col s12">
+            <label for="recipient-name">Nombre de pasta:</label>
+            <input type="text" ng-model="pastaToUpdate.title" id="recipient-name">
+          </div>
+          <div class="input-field col s12">
+            <label for="message-text">Descripción:</label>
+            <textarea class="materialize-textarea" ng-model="pastaToUpdate.description"></textarea>
+          </div>
+        </form>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="updatePasta()">Publicar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="editModalSopa" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <h4 class="modal-title" id="editModalLabel">Actualizar sopa</h4>
+      <div class="row">
+        <form class="col s12">
+        <div class="input-field col s12">
+          <label for="recipient-name">Nombre de sopa:</label>
+          <input type="text" ng-model="sopaToUpdate.title" id="recipient-name">
+        </div>
+        <div class="input-field col s12">
+          <label for="message-text">Descripción:</label>
+          <textarea class="materialize-textarea" ng-model="sopaToUpdate.description"></textarea>
+        </div>
+      </form>
+    </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="updateSopa()">Publicar</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="editModalAgua" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <h4 class="modal-title" id="editModalLabel">Actualizar agua</h4>
+      <div class="row">
+        <form class="col s12">
+          <div class="input-field col s12">
+            <label for="recipient-name">Nombre de agua:</label>
+            <input type="text" ng-model="aguaToUpdate.title" id="recipient-name">
+          </div>
+          <div class="input-field col s12">
+            <label for="message-text">Descripción:</label>
+            <textarea class="materialize-textarea" ng-model="aguaToUpdate.description"></textarea>
+          </div>
+        </form>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="updateAgua()">Publicar</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="modal fade" id="deleteModalPlatillo">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar este platillo.</h4>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="deletePlatillo()">Borrar</a>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModalPasta">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar esta pasta.</h4>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="deletePasta()">Borrar</a>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModalSopa">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar esta sopa.</h4>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteSopa()">Borrar</a>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModalAgua">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar esta agua.</h4>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteAgua()">Borrar</a>
+      </div>
+  </div>
+</div>
+
+
+
+

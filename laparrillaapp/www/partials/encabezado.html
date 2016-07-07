@@ -1,0 +1,27 @@
+
+<header ng-controller="headCrtl">
+
+
+  <nav role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">La Parrilla Express</a>
+      <ul class="right hide-on-med-and-down">
+          <li><a  ng-class="{ 'is-active': $location.path()=='welcome' }" href="#/welcome" class="mdl-layout__tab ">Inicio</a></li>
+          <li><a ng-class="{ 'is-active': $state.is('addPost') }" href="#/addPost" class="mdl-layout__tab">Agregar platillo</a></li>
+          <li><a  ng-class="{ 'is-active': $state.is('enviarMenu') }" href="#/enviarMenu" class="mdl-layout__tab">Enviar menú del día</a></li>
+          <li><a ng-click="logout();" class="mdl-layout__tab">Salir</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+          <li><a  ng-class="{ 'is-active': $location.path()=='welcome' }" href="#/welcome" class="mdl-layout__tab ">Inicio</a></li>
+          <li><a ng-class="{ 'is-active': $state.is('addPost') }" href="#/addPost" class="mdl-layout__tab">Agregar platillo</a></li>
+          <li><a  ng-class="{ 'is-active': $state.is('enviarMenu') }" href="#/enviarMenu" class="mdl-layout__tab">Enviar menú del día</a></li>
+          <li><a ng-click="logout();" class="mdl-layout__tab">Salir</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+</header>
+
+
+

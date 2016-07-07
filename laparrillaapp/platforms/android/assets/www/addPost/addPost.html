@@ -1,0 +1,144 @@
+<div class="container"  ng-controller="AddPostCtrl">
+  <div class="content">
+    <div class="page-header">
+      <img src="imagenes/logo.jpg" alt="La Parrilla Express" />
+    </div>
+    <fieldset>
+      <!-- Form Name -->
+      <legend>Crear menú del día</legend>
+
+      <div class="row">
+        <div class="col-md-3">
+        <div class="well well-default">
+          <form class="form-horizontal" ng-submit="AddPlatillo()">
+            <h2>Platillo</h2>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtTitle">Nombre:</label>
+              <div class="col-md-8">
+                <input id="txtTitle" name="txtTitle" ng-model="platillo.title" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+            <!-- Textarea -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtPost">Descripción:</label>
+              <div class="col-md-8">
+                <textarea class="form-control" id="txtPost" ng-model="platillo.description" name="txtPost" ></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtPost">Tipo de carne:</label>
+              <div class="col-md-8">
+                <select class="form-control" ng-model="platillo.tipo">
+                  <option value="res">Carne de Res</option>
+                  <option value="pollo">Carne de Pollo</option>
+                  <option value="cerdo">Carne de Cerdo</option>
+                </select>
+              </div>
+            </div>
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton"></label>
+              <div class="col-md-8">
+                <button ladda-loading="platillo.loading" data-style="expand-right" ng-disabled="!platillo.title || !platillo.description" name="singlebutton" class="btn btn-primary segoe-ui-light ladda-button" type="submit"><span class="ladda-label">Publicar</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        </div>
+        
+        <div class="col-md-3">
+        <div class="well well-default">
+          <form class="form-horizontal" ng-submit="AddPasta()">
+            <h2>Pasta c/ crema</h2>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtTitle">Nombre:</label>
+              <div class="col-md-8">
+                <input id="txtTitle" name="txtTitle" ng-model="pasta.title" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+            <!-- Textarea -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtPost">Descripción:</label>
+              <div class="col-md-8">
+                <textarea class="form-control" id="txtPost" ng-model="pasta.description" name="txtPost" ></textarea>
+              </div>
+            </div>
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton"></label>
+              <div class="col-md-8">
+                <button ladda-loading="pasta.loading" data-style="expand-right" ng-disabled="!pasta.title || !pasta.description" name="singlebutton" class="btn btn-primary segoe-ui-light ladda-button" type="submit"><span class="ladda-label">Publicar</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        </div>
+        
+        <div class="col-md-3">
+        <div class="well well-default">
+          <form class="form-horizontal" ng-submit="AddSopa()">
+            <h2>Sopa aguada</h2>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtTitle">Nombre:</label>
+              <div class="col-md-8">
+                <input id="txtTitle" name="txtTitle" ng-model="sopa.title" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+            <!-- Textarea -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtPost">Descripción:</label>
+              <div class="col-md-8">
+                <textarea class="form-control" id="txtPost" ng-model="sopa.description" name="txtPost" ></textarea>
+              </div>
+            </div>
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton"></label>
+              <div class="col-md-8">
+                <button ladda-loading="sopa.loading" data-style="expand-right" ng-disabled="!sopa.title || !sopa.description" name="singlebutton" class="btn btn-primary segoe-ui-light ladda-button" type="submit"><span class="ladda-label">Publicar</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        </div>
+
+        <div class="col-md-3">
+        <div class="well well-default">
+          <form class="form-horizontal" ng-submit="AddAgua()">
+            <h2>Agua fresca</h2>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtTitle">Nombre:</label>
+              <div class="col-md-8">
+                <input id="txtTitle" name="txtTitle" ng-model="agua.title" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+            <!-- Textarea -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtPost">Descripción:</label>
+              <div class="col-md-8">
+                <textarea class="form-control" id="txtPost" ng-model="agua.description" name="txtPost" ></textarea>
+              </div>
+            </div>
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton"></label>
+              <div class="col-md-8">
+                <button ladda-loading="agua.loading" data-style="expand-right" ng-disabled="!agua.title || !agua.description" name="singlebutton" class="btn btn-primary segoe-ui-light ladda-button" type="submit"><span class="ladda-label">Publicar</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+      
+    </fieldset>
+  </div>
+</div><!-- /.container -->

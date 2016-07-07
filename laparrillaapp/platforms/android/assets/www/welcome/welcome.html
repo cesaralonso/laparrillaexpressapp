@@ -1,0 +1,244 @@
+<div class="container">
+  <div class="content">
+    <div class="page-header">
+      <img src="imagenes/logo.jpg" alt="La Parrilla Express" />
+    </div>
+    <p class="lead">Bienvenido <b>{{username}}</b> !!</p>
+    <div id="menudeldia" class="ro-section ro-padding-tb">
+
+      <div class="row">
+        <h2 class="ro-hr-heading-2">PLATILLOS DEL DÍA (Pollo, Res o Cerdo)</h2>
+        <h3>Los platillos especiales del día son:</h3>
+        <div class="media bg-blue" style="background-color:#fff; " ng-repeat="platillo in platillos">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" ng-src="imagenes/{{platillo.tipo}}.jpg" alt="Platillo con carne de res">
+            </a>
+          </div>
+          <div class="media-body">
+            <h3 class="media-heading">{{platillo.title}}</h3>
+            <p>{{platillo.description}}</p>
+            <span class="pull-right">
+              <button class="btn btn-xs btn-info" ng-click="editPlatillo(platillo.$id)" data-target="#editModalPlatillo">EDITAR</button>
+              <button class="btn btn-xs btn-warning" ng-click="confirmDeletePlatillo(platillo.$id)" data-target="#deleteModalPlatillo" >ELIMINAR</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h2 class="ro-hr-heading-2">PASTAS C/ CREMA</h2>
+        <h3>La pasta del día es:</h3>
+        <div class="media bg-blue" style="background-color:#fff; " ng-repeat="pasta in pastas">
+          <div class="media-body">
+            <h3 class="media-heading">{{pasta.title}}</h3>
+            <p>{{pasta.description}}</p>
+            <span class="pull-right">
+              <button class="btn btn-xs btn-info" ng-click="editPasta(pasta.$id)" data-target="#editModalPasta">EDITAR</button>
+              <button class="btn btn-xs btn-warning" ng-click="confirmDeletePasta(pasta.$id)" data-target="#deleteModalPasta" >ELIMINAR</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h2 class="ro-hr-heading-2">SOPA AGUADA</h2>
+        <h3>La sopa aguada del día es:</h3>
+        <div class="media bg-blue" style="background-color:#fff; " ng-repeat="sopa in sopas">
+          <div class="media-body">
+            <h3 class="media-heading">{{sopa.title}}</h3>
+            <p>{{sopa.description}}</p>
+            <span class="pull-right">
+              <button class="btn btn-xs btn-info" ng-click="editSopa(sopa.$id)" data-target="#editModalSopa">EDITAR</button>
+              <button class="btn btn-xs btn-warning" ng-click="confirmDeleteSopa(sopa.$id)" data-target="#deleteModalSopa" >ELIMINAR</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h2 class="ro-hr-heading-2">AGUA FRESCA</h2>
+        <h3>Las aguas frescas del día son:</h3>
+        <div class="media bg-blue" style="background-color:#fff; " ng-repeat="agua in aguas">
+          <div class="media-body">
+            <h3 class="media-heading">{{agua.title}}</h3>
+            <p>{{agua.description}}</p>
+            <span class="pull-right">
+              <button class="btn btn-xs btn-info" ng-click="editAgua(agua.$id)" data-target="#editModalAgua">EDITAR</button>
+              <button class="btn btn-xs btn-warning" ng-click="confirmDeleteAgua(agua.$id)" data-target="#deleteModalAgua" >ELIMINAR</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editModalPlatillo" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="editModalLabel">Actualizar platillo</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Nombre de platillo:</label>
+            <input type="text" class="form-control" ng-model="platilloToUpdate.title" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Descripción:</label>
+            <textarea class="form-control" id="message-text" ng-model="platilloToUpdate.description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Tipo de carne:</label>
+            <select class="form-control" ng-model="platilloToUpdate.tipo">
+              <option value="res">Carne de Res</option>
+              <option value="pollo">Carne de Pollo</option>
+              <option value="cerdo">Carne de Cerdo</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" ng-click="updatePlatillo()">Publicar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editModalPasta" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="editModalLabel">Actualizar pasta</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Nombre de pasta:</label>
+            <input type="text" class="form-control" ng-model="pastaToUpdate.title" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Descripción:</label>
+            <textarea class="form-control" id="message-text" ng-model="pastaToUpdate.description"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" ng-click="updatePasta()">Publicar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editModalSopa" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="editModalLabel">Actualizar sopa</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Nombre de sopa:</label>
+            <input type="text" class="form-control" ng-model="sopaToUpdate.title" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Descripción:</label>
+            <textarea class="form-control" id="message-text" ng-model="sopaToUpdate.description"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" ng-click="updateSopa()">Publicar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editModalAgua" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="editModalLabel">Actualizar agua</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Nombre de agua:</label>
+            <input type="text" class="form-control" ng-model="aguaToUpdate.title" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Descripción:</label>
+            <textarea class="form-control" id="message-text" ng-model="aguaToUpdate.description"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" ng-click="updateAgua()">Publicar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="deleteModalPlatillo" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar este platillo.</h4>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="deletePlatillo()">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="deleteModalPasta" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar esta pasta.</h4>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="deletePasta()">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="deleteModalSopa" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar esta sopa.</h4>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="deleteSopa()">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="deleteModalAgua" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar esta agua.</h4>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="deleteAgua()">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>

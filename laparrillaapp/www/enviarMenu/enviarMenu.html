@@ -1,0 +1,53 @@
+<div class="container"  ng-controller="AddPostCtrl">
+  <div class="content">
+    <div class="page-header">
+      <img src="imagenes/logo.jpg" alt="La Parrilla Express" />
+    </div>
+      <!-- Form Name -->
+      <h1>Enviar menú del día</h1>
+      <div class="row">
+        <h4>SUSCRIPTORES</h4>
+        <p>Enviar menú a:</p>
+
+        <div class="card-panel grey lighten-5 z-depth-1" ng-repeat="suscriptor in suscriptores">
+          <div class="row valign-wrapper">
+            <div class="col s8">
+              <h4>{{suscriptor.email}}</h4>
+            </div>
+            <div class="col s4">
+              <div class="card-action">
+                <div style="position: relative;">
+                  <div style="position: absolute; display: inline-block; right: 14px;" class="fixed-action-btn horizontal">
+                    <button class="btn btn-floating red"><i class="material-icons" ng-click="confirmDeleteSuscriptor(suscriptor.$id)" modal href="#deleteModalSuscriptor" >delete_forever</i></button>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="btn btn-success" ng-click="enviarMenu()" >ENVIAR MENÚ</button>
+
+  </div>
+</div><!-- /.container -->
+
+
+
+
+
+<div class="modal fade" id="deleteModalSuscriptor">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar este suscriptor.</h4>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteSuscriptor()">Borrar</a>
+      </div>
+  </div>
+</div>
+

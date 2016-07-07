@@ -1,0 +1,45 @@
+<div class="container"  ng-controller="AddPostCtrl">
+  <div class="content">
+    <div class="page-header">
+      <img src="imagenes/logo.jpg" alt="La Parrilla Express" />
+    </div>
+    <fieldset>
+      <!-- Form Name -->
+      <legend>Enviar menú del día</legend>
+      <div class="row">
+        <h2 class="ro-hr-heading-2">SUSCRIPTORES</h2>
+        <h3>Enviar menú a:</h3>
+        <div class="media bg-blue" style="background-color:#fff; " ng-repeat="suscriptor in suscriptores">
+
+          <div class="media-body">
+            <h3 class="media-heading">{{suscriptor.email}}</h3>
+            <span class="pull-right">
+              <button class="btn btn-xs btn-warning" ng-click="confirmDeleteSuscriptor(suscriptor.$id)" data-target="#deleteModalSuscriptor" >ELIMINAR</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-success" ng-click="enviarMenu()" >ENVIAR MENÚ</button>
+
+
+    </fieldset>
+  </div>
+</div><!-- /.container -->
+
+
+
+<div class="modal fade" id="deleteModalSuscriptor" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">¡Cuidado!, Estas a punto de eliminar este suscriptor.</h4>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="deleteSuscriptor()">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>

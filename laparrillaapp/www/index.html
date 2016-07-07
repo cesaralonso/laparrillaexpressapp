@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html  ng-app="myApp" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="La Parrilla Express.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>La Parrilla Express</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <!-- JavaScript for: jQuery, angular, materialize, and angular-materialize. All of which are needed. -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.1.9/angular-materialize.min.js"></script>
+    <style>
+      main {
+        padding-top: 20px
+      }
+    </style>
+  </head>
+  <body>
+    <div ng-include="'partials/encabezado.html'"></div>
+    <main>
+    <div class="container">
+      <div ng-view></div>
+    </div>
+    </main>
+    <div ng-include="'partials/pie.html'"></div>
+    <!-- Your app -->
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+    
+    <script src="app.js"></script>
+    <script src="home/home.js"></script>
+    <script src="register/register.js"></script>
+    <script src="welcome/welcome.js"></script>
+    <script src="addPost/addPost.js"></script>
+    <script src="enviarMenu/enviarMenu.js"></script>
+    <script src="spin.min.js"></script>
+    <script src="ladda.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+    <script>
+      $(function(){
+        $('.modal-trigger').leanModal({
+          dismissible: true, // Modal can be dismissed by clicking outside of the modal
+          opacity: .5, // Opacity of modal background
+          in_duration: 300, // Transition in duration
+          out_duration: 200, // Transition out duration
+          ready: function() { alert('Ready'); }, // Callback for Modal open
+          complete: function() { alert('Closed'); } // Callback for Modal close
+        });
+      });
+    </script>
+  </body>
+</html>
