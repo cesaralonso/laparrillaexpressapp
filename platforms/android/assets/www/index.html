@@ -1,0 +1,923 @@
+
+<!DOCTYPE html>
+<html lang="es" class="no-js" ng-app="myApp" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>La Parrilla Express - Ciudad Guzmán</title>
+    <link rel="shortcut icon" href="assets/images/logo.jpg">
+    <meta name="description" content="La Parrilla Express - Ciudad Guzmán">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link href="css/vendor/font-awesome.css" rel="stylesheet">
+
+    <link href="assets/font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+    <link href="fonts/icon-fonts/styles.css" rel="stylesheet"><!---->
+
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+  </head>
+  <body ng-controller="mainCtrl">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="ro-main-menu" class="ro-main-menu">
+      <div class="container-fluid">
+        <a href="index.html" class="ro-platonic-brand pull-left">
+          <img src="assets/images/logo.png" alt="La Parrilla Express - Ciudad Guzmán">
+          </a>
+        <div id="ro-hamburger" class="ro-hamburger pull-right"><span></span></div>
+      </div>
+    </div>
+
+
+    <nav id="ro-main-menu-content" class="ro-main-menu-content">
+
+      <ul class="ro-easing-link-group">
+        <li><a href="index.html"><img src="assets/images/logo.png" alt="La Parrilla Express"></a></li>
+        <li><a href="#home">INICIO</a></li>
+        <li><a href="#menudeldia">MENÚ DEL DÍA</a></li>
+        <li><a href="#about">NOSOTROS</a></li>
+        <li><a href="#lacarta">LA CARTA</a></li>
+        <li><a href="#sevicios">SERVICIOS</a></li>
+        <!--<li><a href="#platillosestrella">GALERIA</a></li>--> 
+        <!--<li><a href="#especialidades">ESPECIALIDADES</a></li>-->  
+        <li><a href="#ubicacion">UBICACIÓN Y CONTACTO</a></li>
+        <!--<li><a href="#reservacion">RESERVA</a></li>-->
+      </ul>
+
+    </nav>
+    <div id="ro-main" class="ro-main">
+      <header id="home" class="ro-home ro-section ro-bg-trans-dark-3">
+        <div id="ro-home-slider-wrapper" class="ro-home-bg">
+          <div id="ro-home-background-slider" class="flexslider">
+            <ul class="slides">
+              <li><img src="assets/images/8.jpg" alt="home-background"></li>
+              <li><img src="assets/images/11.jpg" alt="home-background"></li>
+              <li><img src="assets/images/17.jpg" alt="home-background"></li>
+              <li><img src="assets/images/14.jpg" alt="home-background"></li>
+            </ul>
+          </div>
+        </div>
+        <div id="ro-home-nav" class="ro-home-nav visible-lg visible-md">
+          <ul class="ro-easing-link-group">
+            <li><a href="#home"></a></li>
+            <li><a href="#about"></a></li>
+            <li><a href="#lacarta"></a></li>
+            <li><a href="#menudeldia"></a></li>
+            <li><a href="#platillosestrella"></a></li>
+            <li><a href="#sevicios"></a></li>  
+            <li><a href="#ubicacion"></a></li>
+          </ul>
+        </div>
+        <div class="ro-cell-vertical-wrapper">
+          <div class="ro-cell-middle text-center">
+            <div class="container ro-home-content-container">
+              <div class="ro-content-section ro-logo"><img src="assets/images/logo_grande.png" alt="La Parrilla Express"></div>
+              <div class="ro-content-section">
+                <p class="ro-font-size-1"><b>Bienvenidos a</b></p>
+                <p class="ro-border-text">LA PARRILLA EXPRESS</p>
+                <p class="ro-font-size-2"><i>La Mejor Cocina Mexicana en Ciudad Guzmán</i></p>
+              </div>
+
+              <div class="ro-content-section ro-open-time">
+                <p>Lunes - Sabados         1:00 AM a 04:00 PM</p>
+                <p>Pedidos a domicilio al teléfono: 341-2-75-95</p>
+                <!--<p>Sabados                 12:00 AM a 05:00 PM</p>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+
+      <div style="background: url('imagenes/menudeldia_top.jpg') top center no-repeat; height: 46px;"></div>
+      <div id="menudeldia" style="background: url('imagenes/menudeldia.jpg') #aaa top center fixed no-repeat;" class="ro-section ro-padding-tb">
+        <div class="container">
+          <h2 class="ro-hr-heading-1 ro-large-margin">MENÚ DEL DÍA</h2>
+          <div class="row">
+            <div class="col-md-6">            
+              <h2 class="ro-hr-heading-2">PLATILLOS DEL DÍA (Pollo, Res o Cerdo)</h2>
+              <div class="media bg-blue" style="" ng-repeat="platillo in platillos">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" ng-src="imagenes/{{platillo.tipo}}.jpg" alt="Platillo con carne de {{platillo.tipo}}">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h3 class="media-heading">{{platillo.title}}</h3>
+                  {{platillo.description}}
+                </div>
+              </div>
+              <p><strong>Todos los platillos incluyen entrada y dos guarniciones a elegir.</strong></p>
+            </div>
+            <div class="col-md-4">
+              <h2 class="ro-hr-heading-2">PASTAS C/ CREMA</h2>
+              <div class="media bg-blue" style="" ng-repeat="pasta in pastas">
+                <div class="media-body">
+                  <h3 class="media-heading">{{pasta.title}}</h3>
+                  {{pasta.description}}
+                </div>
+              </div>
+              <br>
+              <h2 class="ro-hr-heading-2">SOPA AGUADA</h2>
+              <div class="media bg-blue" style="" ng-repeat="sopa in sopas">
+                <div class="media-body">
+                  <h3 class="media-heading">{{sopa.title}}</h3>
+                  {{sopa.description}}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <h2 class="ro-hr-heading-2">AGUA FRESCA</h2>
+              <div class="media bg-blue" style="" ng-repeat="agua in aguas">
+                <div class="media-body">
+                  <h3 class="media-heading">{{agua.title}}</h3>
+                  {{agua.description}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="well text-success">
+            <p>Si deseas recibir en tu correo diariamente el menú del día déjanos tu correo:</p>
+            <form ng-submit="Suscribir()">
+              <input type="email" class="form-control" ng-model="suscripcion.email" placeholder="Tu email">
+              <button ladda-loading="suscripcion.loading" data-style="expand-right" ng-disabled="!suscripcion.email " name="singlebutton" class="btn btn-default segoe-ui-light ladda-button" type="submit"><span class="ladda-label">Suscribirme</span></button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <div style="background: url('imagenes/menudeldia_bottom.jpg') bottom center no-repeat; height: 49px;"></div>
+
+
+
+      <div id="about" class="ro-about ro-section ro-padding-tb ro-trans-overlay-bg-light-2">
+        <div class="ro-overlay-bg ro-video-bg-wrapper">
+          <video autoplay muted loop class="ro-video-bg">
+            <source src="http://salonhaciendalareja.com/laparrillaexpress/La%20Parrilla%20Express.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12 ro-section-item">
+              <h2 class="ro-hr-heading-2">ACERCA DE NOSOTROS</h2>
+              <h4>La Parrilla Express</h4>
+              <p>
+              Restaurant y Comida Mexicana Para Llevar en Ciudad Guzmán con Servicio a Domicilio.
+              </p><p>
+              Pioneros en Cocina Mexicana y Cocina Rápida en Ciudad Guzmán
+              </p>
+              <p>La Parrilla Express se complace en ofrecerle diariamente deliciosos guisos en pollo, guisos de res y guisos de cerdo</p>
+              <p>Deliciosas Sopas, Guarniciones, Pastas y Verduras.</p>
+              <p>Filetes de pollo y filetes de pescado empanizados y a la plancha.</p>
+              <p>Suculenta Barra de Ensaladas</a></p>
+              <p>Y Sin faltar Ricos Antojitos Mexicanos como: Enchiladas, Tacos Dorados, Burritos, Chiles Rellenos y Deliciosos Postres.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="lacarta" class="ro-section ro-padding-tb">
+        <div role="tabpanel">
+          <div class="container">
+            <div class="ro-menu-nav-wrapper">
+        <h2 class="ro-hr-heading-1 ro-large-margin">LA CARTA</h2>
+
+              <h3 class="text-center"><strong>Arma tu paquete, elige entre un platillo y 2 complementos de entrada y/ó guarniciones.</strong></h3>
+              <h3 class="text-center"><strong>¡Si deseas complementos extra solicitalos!</strong></h3>
+              <div class="ro-team-wrapper clearfix">
+
+
+                <div class="col-sm-4">
+                  <div class="ro-team-item"><img src="assets/images/platillo.jpg" alt="PLATILLOS">
+                    <div class="ro-team-info">
+                      <div class="ro-information clearfix">
+                        <h4 class="ro-hr-heading-s-2">LA BOUTIQUE DEL FILETE</h4>
+                         <ul>
+                           <li>Filete de pollo empanizado</li>
+                           <li>Filete de pollo a la plancha</li>
+                           <li>Filete de pescado empanizado</li>
+                           <li>Filete de pescado a la plancha</li>
+                           <li>Filete de res a la parrilla</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="ro-team-item"><img src="assets/images/antojitos1.jpg" alt="ANTOJITOS">
+                    <div class="ro-team-info">
+                      <div class="ro-information clearfix">
+                        <h4 class="ro-hr-heading-s-2">PLATILLOS Y ANTOJITOS MEXICANOS</h4>
+                        <ul>
+                          <li>Enchiladas de Pollo</li>
+                          <li>Burritos de deshebrada</li>
+                          <li>Tacos Dorados de requesón</li>
+                          <li>Quesadillas</li>
+                          <li>Flautas de Pollo o Panela</li>
+                          <li>Rollo de pescado relleno</li>
+                          <li>Chile relleno</li>
+                        </ul>
+                        <p>Todos los antojitos incluyen 4 piezas y una guarnición a elegir.</li>
+                        <p><strong>Pregunta por los platillos del día</strong></p>
+                        <p>Si deseas pide un <strong>Platillo mediano</strong></p>
+                        <p><strong>Una comida completa lleva 2 guarniciones a escojer</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="ro-team-item"><img src="assets/images/arroz.jpg" alt="GUARNICIONES">
+                    <div class="ro-team-info">
+                      <div class="ro-information clearfix">
+                        <h4 class="ro-hr-heading-s-2">GUARNICIONES</h4>
+                        <ul>    
+                          <li>Arroz blanco</li>
+                          <li>Arroz a la mexicana</li>
+                          <li>Pasta con crema</li>
+                          <li>Ensalada de lechuga</li>
+                          <li>Verduras al vapor</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="ro-team-wrapper clearfix">
+
+                <div class="col-sm-4">
+                  <div class="ro-team-item"><img src="assets/images/ensaladas.jpg" alt="ENTRADAS">
+                    <div class="ro-team-info">
+                      <div class="ro-information clearfix">
+                        
+                        <h4 class="ro-hr-heading-s-2"><a href="blog-article.html">ENTRADAS</a></h4>
+                        <ul>
+                            <li>Sopa Juliana de verduras</li>
+                            <li>Sopa aguada de pasta</li>
+                            <li>Barra de ensaladas</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="ro-team-item"><img src="assets/images/postre.jpg" alt="POSTRES">
+                    <div class="ro-team-info">
+                      <div class="ro-information clearfix">
+                        <h4 class="ro-hr-heading-s-2">POSTRES</h4>
+                          <ul>
+                            <li>Flan Napolitano</li>
+                            <li>Pay de Queso</li>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="ro-team-item"><img src="assets/images/aguas.jpg" alt="BEBIDAS">
+                    <div class="ro-team-info">
+                      <div class="ro-information clearfix">
+                        <h4 class="ro-hr-heading-s-2">BEBIDAS</h4>
+                          <ul>
+                            <li>Agua Fresca</li>
+                            <li>Jarra</li>
+                            <li>1/2 Jarra</li>
+                            <li>Refresco 600ml</li>
+                            <li>Refresco 400ml</li>
+                            <li>Cerveza (Clara & Orcura)</li>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div id="sevicios" class="ro-section ro-padding-tb">
+        <h2 class="ro-hr-heading-1 ro-large-margin">SERVICIOS</h2>
+        <div class="container">
+          <h3 class="text-center">Nuestro compromiso es con nuestros clientes, por su total satisfaccion.</h3>
+          <div class="row text-center  wowload fadeInDownBig animated" style="visibility: visible; animation-name: fadeInDownBig;">
+            
+            <div class="col-sm-6 col-xs-12">
+              <i class="fa fa-cutlery  fa-5x"></i>
+              <h4>Área de Restaurante</h4>
+              <p>Ven y disfruta de tus alimentos en nuestra área de Restaurante, es comoda, fresca y te brindamos una atención personalizada y amable. ¡Elige tus ensaladas libremente!.</p>
+            </div>
+
+            <div class="col-sm-6 col-xs-12">
+              <i class="fa fa fa-car  fa-5x"></i>
+              <h4>Servicio Auto Express</h4>
+              <p>Servicio de comida para llevar desde tu auto. No necesitas bajarte de tu auto para pedir tu comida, disfruta de este servicio único de comida para llevar desde tu auto en Ciudad Guzmán, Jalisco.</p>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <i class="fa fa-motorcycle  fa-5x"></i>
+              <h4>Servicio a domicilio</h4>
+              <p>Pide comida a domicilio en Ciudad Guzmán,  Tu comida a domicilio con servicio Express. <br/><br/>Teléfono<br/><strong>341-2-75-95</strong></p>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <i class="fa fa-shopping-cart fa-5x"></i>
+              <h4>Servicio express de comida para llevar</h4>
+              <p>Elige tus platillos  de la barra de comidas recien hechas y !llevalas a tu casa!.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+  <!-- 
+      <div id="platillosestrella" class="ro-section ro-padding-tb hidden-xs">
+        <div role="tabpanel">
+          <div class="container">
+            <div class="ro-menu-nav-wrapper">
+              <h2>GALERÍA DE PLATILLOS</h2>
+                    
+<nav id="ro-menu-nav" class="ro-menu-nav">
+                <ul role="tablist" class="list-inline">
+                  <li role="presentation" class="active"><a href="#menu-combo1" aria-controls="menu-combo1" role="tab" data-toggle="tab">La boutique del filete</a></li>
+                  <li role="presentation"><a href="#menu-combo2" aria-controls="menu-combo2" role="tab" data-toggle="tab">Cocina mexicana</a></li>
+                  <li role="presentation"><a href="#menu-pizza" aria-controls="menu-pizza" role="tab" data-toggle="tab">Postres</a></li>
+                  <li role="presentation"><a href="#menu-dinner" aria-controls="menu-dinner" role="tab" data-toggle="tab">Aguas</a></li>
+                  <li role="presentation"><a href="#menu-seafood" aria-controls="menu-seafood" role="tab" data-toggle="tab">Ensaladas</a></li>
+                </ul>
+              </nav>
+
+            </div>
+          </div>
+          <div class="tab-content">
+            <div id="menu-combo1" role="tabpanel" class="tab-pane fade in active ro-diamond-area clearfix ro-section-item">
+              <div class="ro-diamond-area-inner">
+                <div data-diamond-size="2" data-x5='1' data-y5='0' data-x4='0' data-y4='0' data-x3='0' data-y3='0' data-x2='0' data-y2='2' class="ro-diamond-block ro-menu-description">
+                  <div class="ro-diamond-clipper"><img src="assets/images/10.jpg" alt="diamond-img">
+                    <div class="ro-diamond-content">
+                      <div class="ro-diamond-content-inner">
+                        <div class="ro-price"><span></span></div>
+                        <div class="ro-content">
+                          <h4>La boutique del filete</h4>
+                          <p><b>Los únicos cortes finos en la ciudad al alcance de todos.</p>
+                          <p>Filetes de calidad.</p>
+                          <h6>Delicioso!</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='5' data-y5='1' data-x4='4' data-y4='1' data-x3='4' data-y3='1' data-x2='0' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/1.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='1' data-x4='5' data-y4='2' data-x3='3' data-y3='2' data-x2='2' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/2.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='2' data-x4='2' data-y4='3' data-x3='3' data-y3='4' data-x2='0' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/3.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-diamond-size="2" data-x5='0' data-y5='3' data-x4='0' data-y4='4' data-x3='0' data-y3='4' data-x2='0' data-y2='6' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/4.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='3' data-x4='4' data-y4='3' data-x3='4' data-y3='5' data-x2='2' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/5.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='3' data-x4='4' data-y4='5' data-x3='3' data-y3='6' data-x2='0' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/6.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='4' data-x4='3' data-y4='6' data-x3='2' data-y3='7' data-x2='2' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/7.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='5' data-x4='5' data-y4='6' data-x3='1' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/8.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='5' data-x4='2' data-y4='7' data-x3='3' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/9.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='5' data-x4='4' data-y4='7' data-x3='2' data-y3='9' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2 ro-hi ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/10.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='0' data-y5='2' data-x4='0' data-y4='3' data-x3='0' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-prev ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle"><i class="fa fa-back"></i>ANTERIOR</div></a></div>
+                </div>
+                <div data-x5='7' data-y5='3' data-x4='5' data-y4='4' data-x3='4' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-next ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle">SIGUIENTE<i class="fa fa-next"></i></div></a></div>
+                </div>
+                <div data-x5='4' data-y5='2' data-x4='3' data-y4='2' data-x3='3' data-y3='0' data-x2='1' data-y2='0' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper ro-bg-main">
+                      <div class="ro-title ro-cell-middle">ESPECIALIDAD 1</div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='4' data-y5='4' data-x4='3' data-y4='4' data-x3='2' data-y3='3' data-x2='1' data-y2='10' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper"><a href="#reservation" style="background: url('assets/images/menu2.jpg') center no-repeat" class="ro-easing-link ro-book-table ro-cell-middle"></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="menu-combo2" role="tabpanel" class="tab-pane fade ro-diamond-area clearfix ro-section-item">
+              <div class="ro-diamond-area-inner">
+                <div data-diamond-size="2" data-x5='1' data-y5='0' data-x4='0' data-y4='0' data-x3='0' data-y3='0' data-x2='0' data-y2='2' class="ro-diamond-block ro-menu-description">
+                  <div class="ro-diamond-clipper"><img src="assets/images/11.jpg" alt="diamond-img">
+                    <div class="ro-diamond-content">
+                      <div class="ro-diamond-content-inner">
+                        <div class="ro-price">18<span>$</span></div>
+                        <div class="ro-content">
+                          <h4>ESPECIALIDAD 2</h4>
+                          <p><b>Ingredientes:&nbsp;&nbsp;&nbsp;&nbsp;</b>Ajo, Cebolla, Cilantro, Perejil ....</p>
+                          <p>Ricas enchiladas tradicionales con mole poblano, cebollitas moradas en limón, bañadas con queso de mesa..... etc.</p>
+                          <h6>Delicioso!</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='5' data-y5='1' data-x4='4' data-y4='1' data-x3='4' data-y3='1' data-x2='0' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/11.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='1' data-x4='5' data-y4='2' data-x3='3' data-y3='2' data-x2='2' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/12.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='2' data-x4='2' data-y4='3' data-x3='3' data-y3='4' data-x2='0' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/13.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-diamond-size="2" data-x5='0' data-y5='3' data-x4='0' data-y4='4' data-x3='0' data-y3='4' data-x2='0' data-y2='6' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/14.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='3' data-x4='4' data-y4='3' data-x3='4' data-y3='5' data-x2='2' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/15.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='3' data-x4='4' data-y4='5' data-x3='3' data-y3='6' data-x2='0' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/16.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='4' data-x4='3' data-y4='6' data-x3='2' data-y3='7' data-x2='2' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/17.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='5' data-x4='5' data-y4='6' data-x3='1' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/18.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='5' data-x4='2' data-y4='7' data-x3='3' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/1.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='5' data-x4='4' data-y4='7' data-x3='2' data-y3='9' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2 ro-hi ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/2.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='0' data-y5='2' data-x4='0' data-y4='3' data-x3='0' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-prev ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle"><i class="fa fa-back"></i>ANTERIOR</div></a></div>
+                </div>
+                <div data-x5='7' data-y5='3' data-x4='5' data-y4='4' data-x3='4' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-next ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle">SIGUIENTE<i class="fa fa-next"></i></div></a></div>
+                </div>
+                <div data-x5='4' data-y5='2' data-x4='3' data-y4='2' data-x3='3' data-y3='0' data-x2='1' data-y2='0' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper ro-bg-main">
+                      <div class="ro-title ro-cell-middle">ESPECIALIDAD 2</div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='4' data-y5='4' data-x4='3' data-y4='4' data-x3='2' data-y3='3' data-x2='1' data-y2='10' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper"><a href="#reservation" style="background: url('assets/images/menu2.jpg') center no-repeat" class="ro-easing-link ro-book-table ro-cell-middle"></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="menu-pizza" role="tabpanel" class="tab-pane fade ro-diamond-area clearfix ro-section-item">
+              <div class="ro-diamond-area-inner">
+                <div data-diamond-size="2" data-x5='1' data-y5='0' data-x4='0' data-y4='0' data-x3='0' data-y3='0' data-x2='0' data-y2='2' class="ro-diamond-block ro-menu-description">
+                  <div class="ro-diamond-clipper"><img src="assets/images/10.jpg" alt="diamond-img">
+                    <div class="ro-diamond-content">
+                      <div class="ro-diamond-content-inner">
+                        <div class="ro-price">12<span>$</span></div>
+                        <div class="ro-content">
+                          <h4>ESPECIALIDAD 3</h4>
+                          <p><b>Ingredientes:&nbsp;&nbsp;&nbsp;&nbsp;</b>Ajo, Cebolla, Cilantro, Perejil ....</p>
+                          <p>Ricas enchiladas tradicionales con mole poblano, cebollitas moradas en limón, bañadas con queso de mesa..... etc.</p>
+                          <h6>Delicioso!</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='5' data-y5='1' data-x4='4' data-y4='1' data-x3='4' data-y3='1' data-x2='0' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/3.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='1' data-x4='5' data-y4='2' data-x3='3' data-y3='2' data-x2='2' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/4.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='2' data-x4='2' data-y4='3' data-x3='3' data-y3='4' data-x2='0' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/5.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-diamond-size="2" data-x5='0' data-y5='3' data-x4='0' data-y4='4' data-x3='0' data-y3='4' data-x2='0' data-y2='6' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/6.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='3' data-x4='4' data-y4='3' data-x3='4' data-y3='5' data-x2='2' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/7.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='3' data-x4='4' data-y4='5' data-x3='3' data-y3='6' data-x2='0' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/8.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='4' data-x4='3' data-y4='6' data-x3='2' data-y3='7' data-x2='2' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/9.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='5' data-x4='5' data-y4='6' data-x3='1' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/10.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='5' data-x4='2' data-y4='7' data-x3='3' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/11.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='5' data-x4='4' data-y4='7' data-x3='2' data-y3='9' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2 ro-hi ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/12.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='0' data-y5='2' data-x4='0' data-y4='3' data-x3='0' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-prev ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle"><i class="fa fa-back"></i>ANTERIOR</div></a></div>
+                </div>
+                <div data-x5='7' data-y5='3' data-x4='5' data-y4='4' data-x3='4' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-next ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle">SIGUIENTE<i class="fa fa-next"></i></div></a></div>
+                </div>
+                <div data-x5='4' data-y5='2' data-x4='3' data-y4='2' data-x3='3' data-y3='0' data-x2='1' data-y2='0' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper ro-bg-main">
+                      <div class="ro-title ro-cell-middle">ESPECIALIDAD 3</div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='4' data-y5='4' data-x4='3' data-y4='4' data-x3='2' data-y3='3' data-x2='1' data-y2='10' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper"><a href="#reservation" style="background: url('assets/images/menu2.jpg') center no-repeat" class="ro-easing-link ro-book-table ro-cell-middle"></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="menu-dinner" role="tabpanel" class="tab-pane fade ro-diamond-area clearfix ro-section-item">
+              <div class="ro-diamond-area-inner">
+                <div data-diamond-size="2" data-x5='1' data-y5='0' data-x4='0' data-y4='0' data-x3='0' data-y3='0' data-x2='0' data-y2='2' class="ro-diamond-block ro-menu-description">
+                  <div class="ro-diamond-clipper"><img src="assets/images/11.jpg" alt="diamond-img">
+                    <div class="ro-diamond-content">
+                      <div class="ro-diamond-content-inner">
+                        <div class="ro-price">45<span>$</span></div>
+                        <div class="ro-content">
+                          <h4>Enchiladas verdes</h4>
+                          <p><b>Ingredientes:&nbsp;&nbsp;&nbsp;&nbsp;</b>Ajo, Cebolla, Cilantro, Perejil ....</p>
+                          <p>Ricas enchiladas tradicionales con mole poblano, cebollitas moradas en limón, bañadas con queso de mesa..... etc.</p>
+                          <h6>Delicioso!</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='5' data-y5='1' data-x4='4' data-y4='1' data-x3='4' data-y3='1' data-x2='0' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/13.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='1' data-x4='5' data-y4='2' data-x3='3' data-y3='2' data-x2='2' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/14.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='2' data-x4='2' data-y4='3' data-x3='3' data-y3='4' data-x2='0' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/15.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-diamond-size="2" data-x5='0' data-y5='3' data-x4='0' data-y4='4' data-x3='0' data-y3='4' data-x2='0' data-y2='6' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/16.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='3' data-x4='4' data-y4='3' data-x3='4' data-y3='5' data-x2='2' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/17.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='3' data-x4='4' data-y4='5' data-x3='3' data-y3='6' data-x2='0' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/18.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='4' data-x4='3' data-y4='6' data-x3='2' data-y3='7' data-x2='2' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/1.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='5' data-x4='5' data-y4='6' data-x3='1' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/2.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='5' data-x4='2' data-y4='7' data-x3='3' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/3.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='5' data-x4='4' data-y4='7' data-x3='2' data-y3='9' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2 ro-hi ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/4.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='0' data-y5='2' data-x4='0' data-y4='3' data-x3='0' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-prev ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle"><i class="fa fa-back"></i>ANTERIOR</div></a></div>
+                </div>
+                <div data-x5='7' data-y5='3' data-x4='5' data-y4='4' data-x3='4' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-next ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle">SIGUIENTE<i class="fa fa-next"></i></div></a></div>
+                </div>
+                <div data-x5='4' data-y5='2' data-x4='3' data-y4='2' data-x3='3' data-y3='0' data-x2='1' data-y2='0' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper ro-bg-main">
+                      <div class="ro-title ro-cell-middle">ESPECIALIDAD 4</div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='4' data-y5='4' data-x4='3' data-y4='4' data-x3='2' data-y3='3' data-x2='1' data-y2='10' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper"><a href="#reservation" style="background: url('assets/images/menu2.jpg') center no-repeat" class="ro-easing-link ro-book-table ro-cell-middle"></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="menu-seafood" role="tabpanel" class="tab-pane fade ro-diamond-area clearfix ro-section-item">
+              <div class="ro-diamond-area-inner">
+                <div data-diamond-size="2" data-x5='1' data-y5='0' data-x4='0' data-y4='0' data-x3='0' data-y3='0' data-x2='0' data-y2='2' class="ro-diamond-block ro-menu-description">
+                  <div class="ro-diamond-clipper"><img src="assets/images/11.jpg" alt="diamond-img">
+                    <div class="ro-diamond-content">
+                      <div class="ro-diamond-content-inner">
+                        <div class="ro-price">14<span>$</span></div>
+                        <div class="ro-content">
+                          <h4>ESPECIALIDAD 5</h4>
+                          <p><b>Ingredientes:&nbsp;&nbsp;&nbsp;&nbsp;</b>Ajo, Cebolla, Cilantro, Perejil ....</p>
+                          <p>Ricas enchiladas tradicionales con mole poblano, cebollitas moradas en limón, bañadas con queso de mesa..... etc.</p>
+                          <h6>Delicioso!</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='5' data-y5='1' data-x4='4' data-y4='1' data-x3='4' data-y3='1' data-x2='0' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/5.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='1' data-x4='5' data-y4='2' data-x3='3' data-y3='2' data-x2='2' data-y2='1' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/6.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='2' data-x4='2' data-y4='3' data-x3='3' data-y3='4' data-x2='0' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/7.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-diamond-size="2" data-x5='0' data-y5='3' data-x4='0' data-y4='4' data-x3='0' data-y3='4' data-x2='0' data-y2='6' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/8.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='3' data-x4='4' data-y4='3' data-x3='4' data-y3='5' data-x2='2' data-y2='5' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/9.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='3' data-x4='4' data-y4='5' data-x3='3' data-y3='6' data-x2='0' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/10.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='6' data-y5='4' data-x4='3' data-y4='6' data-x3='2' data-y3='7' data-x2='2' data-y2='9' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper"><img src="assets/images/11.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='3' data-y5='5' data-x4='5' data-y4='6' data-x3='1' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/12.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='5' data-y5='5' data-x4='2' data-y4='7' data-x3='3' data-y3='8' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/13.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='7' data-y5='5' data-x4='4' data-y4='7' data-x3='2' data-y3='9' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2 ro-hi ro-hide-2">
+                  <div class="ro-diamond-clipper"><img src="assets/images/14.jpg" alt="diamond-img"></div>
+                </div>
+                <div data-x5='0' data-y5='2' data-x4='0' data-y4='3' data-x3='0' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-prev ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle"><i class="fa fa-back"></i>ANTERIOR</div></a></div>
+                </div>
+                <div data-x5='7' data-y5='3' data-x4='5' data-y4='4' data-x3='4' data-y3='3' data-x2='0' data-y2='0' class="ro-diamond-block ro-hide-2">
+                  <div class="ro-diamond-clipper"><a href="#" class="ro-combo-next ro-diamond-block-content-2 ro-cell-vertical-wrapper">
+                      <div class="ro-nav ro-cell-middle">SIGUIENTE<i class="fa fa-next"></i></div></a></div>
+                </div>
+                <div data-x5='4' data-y5='2' data-x4='3' data-y4='2' data-x3='3' data-y3='0' data-x2='1' data-y2='0' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper ro-bg-main">
+                      <div class="ro-title ro-cell-middle">ESPECIALIDAD 5</div>
+                    </div>
+                  </div>
+                </div>
+                <div data-x5='4' data-y5='4' data-x4='3' data-y4='4' data-x3='2' data-y3='3' data-x2='1' data-y2='10' class="ro-diamond-block">
+                  <div class="ro-diamond-clipper">
+                    <div class="ro-diamond-block-content-2 ro-cell-vertical-wrapper"><a href="#reservation" style="background: url('assets/images/menu2.jpg') center no-repeat" class="ro-easing-link ro-book-table ro-cell-middle"></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   -->
+
+<!--
+      <div id="especialidades" class="ro-section ro-padding-t">
+        <div class="container">
+
+          <h2 class="ro-hr-heading-1">ESPECIALIDADES</h2>
+          <div class="ro-team-wrapper clearfix">
+
+            <div class="col-sm-3">
+              <div class="ro-team-item"><img src="assets/images/menu3.jpg" alt="team-member">
+                <div class="ro-team-info">
+                  <div class="ro-information clearfix">
+                    <h4 class="ro-hr-heading-s-2">CORTES FINOS</h4><i>¡Con carne de primera!</i>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="ro-team-item"><img src="assets/images/menu4.jpg" alt="team-member">
+                <div class="ro-team-info">
+                  <div class="ro-information clearfix">
+                    <h4 class="ro-hr-heading-s-2">FILETES DE POLLO</h4><i>Deliciosos platillos</i>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="ro-team-item"><img src="assets/images/menu5.jpg" alt="team-member">
+                <div class="ro-team-info">
+                  <div class="ro-information clearfix">
+                    <h4 class="ro-hr-heading-s-2">EXQUISITOS MARISCOS</h4><i>Frescos platillos del mar</i>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="ro-team-item"><img src="assets/images/menu6.jpg" alt="team-member">
+                <div class="ro-team-info">
+                  <div class="ro-information clearfix">
+                    <h4 class="ro-hr-heading-s-2">COMIDA MEXICANA</h4><i>La mejor comida tradicional</i>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
+
+
+
+      <div id="ubicacion" class="ro-section ro-padding-tb">
+        <h2 class="ro-hr-heading-1 ro-large-margin">UBICACIÓN Y CONTACTO</h2>
+        <div class="container">
+          <div class="row text-center">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom' class="hidden-xs"></ui-gmap-google-map>
+            <br/>
+
+              <p>
+              Ramón Corona #199 / C.P. 49000, <br/>
+              Centro Ciudad Guzmán, Jalisco</p>
+              <p>
+              Lunes a Sabado - 1pm. a 4pm.</p>
+ 
+              <p>
+              Teléfono<br/>
+              <strong>341-2-75-95</strong>
+              </p>
+
+
+          </div>
+        </div>
+      </div>
+
+<!--
+      <div id="reservacion" class="ro-section ro-padding-tb">
+        <h2 class="ro-hr-heading-1 ro-large-margin">RESERVA TU MESA O BANQUETE</h2>
+        <div class="container">
+          <div class="row">
+            <form class="ro-section-item" action="http://www.salonhaciendalareja.com/laparrillaexpress/envia_email.php" method="post">
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-7">
+                    <input type="text" placeholder="Nombre" name="nombre">
+                  </div>
+                  <div class="col-sm-5">
+                    <select name="servicio">
+                      <option>Servicio</option>
+                      <option value="Mesa en restaurant">MESA EN RESTAURANT</option>
+                      <option value="Banquete para evento">BANQUETE PARA EVENTO</option>
+                    </select>
+                  </div>
+                </div>
+                <input type="email" placeholder="Correo electrónico" name="email" required>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <select name="horario">
+                      <option>Horario</option>
+                      <option value="09:00 - 12:00">09:00 - 12:00</option>
+                      <option value="12:00 - 14:00">12:00 - 14:00</option>
+                      <option value="14:00 - 16:00">14:00 - 16:00</option>
+                      <option value="16:00 - 18:00">16:00 - 18:00</option>
+                      <option value="18:00 - 20:00">18:00 - 20:00</option>
+                      <option value="20:00 - 23:00">20:00 - 23:00</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-7">
+                    <input id="ro-date-picker" type="text" placeholder="Fecha" name="fecha">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <select name="personas">
+                      <option>Personas</option>
+                      <option value="1 - 5">1 - 5</option>
+                      <option value="6 - 10">6 - 10</option>
+                      <option value="11 - 20">11 - 20</option>
+                      <option value="21 - 30">21 - 30</option>
+                      <option value="30 o mas">30 o mas</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="submit" value="CONSULTAR">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>-->
+      <footer id="footer" class="ro-footer ro-section ro-padding-tb ro-bg-dark ro-color-gray-1">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-sm-9 ro-section-item">
+              <h5>¡ESTAMOS PARA SERVIRTE!</h5>
+              <p>Lunes a Sabado - 1pm a 4pm <br/>
+                Ramón Corona #199 / C.P. 49000, <br/>
+                Centro Ciudad Guzmán, Jalisco</p>
+              <p>Teléfono: <br/>
+                <strong>341-2-75-95</strong><br/>
+                Correo electrónico: <br/>
+                <strong>contacto@laparrillaexpress.com</strong></p>
+              <!--<p><a href="#" class="ro-btn-1">CONTACTANOS</a></p>-->
+            </div>
+            <div class="col-md-5 col-sm-12 ro-section-item">
+              <h5>LA PARRILLA EXPRESS</h5>
+              <p>
+              Pioneros en Cocina Mexicana en Ciudad Guzmán.<br>/
+              Restaurant y Comida Mexicana Para Llevar en Ciudad Guzmán con Servicio a Domicilio.
+              </p>
+
+              <h5>REDES SOCIALES</h5>
+              <ul class="ro-footer-social-network">
+                <li><a href="https://www.facebook.com/La-Parrilla-Express-151826838173187/"><i class="fa fa-facebook fa-2x"></i>Facebook</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-3 ro-section-item">
+
+              <h5>SERVICIOS</h5>
+              <ul class="ro-footer">
+                <li>Servicio de Restaurante</li>
+                <li>Servicio de comida para llevar <strong>desde tu auto</strong></li>
+                <li>Comida para llevar</li>
+                <li>Servicio a domicilio</li>
+              </ul> 
+
+           <h5>IDEAL PARA</h5>
+              <ul class="ro-footer">
+                <li>Comida tradicional</li>
+                <li>Comida express</li>
+                <li>Personas ocupadas</li>
+                <li>Grupos</li> 
+             </ul> 
+
+            </div>
+          </div>
+          <div class="ro-footer-logo">
+            <div class="ro-line"><span></span></div><img src="assets/images/logo.png" alt="footer-logo">
+            <div class="ro-line"><span></span></div>
+          </div>
+        </div>
+      </footer>
+    </div>    
+    <script src="http://code.angularjs.org/1.2.6/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src='bower_components/lodash/lodash.min.js'></script>
+    <script src='bower_components/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
+    <script src='bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script>
+
+    <script src="js/datepicker.min.js"></script>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/jquery.fancybox.pack.js"></script>
+    <script src="js/jquery.easing-1.3.min.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
